@@ -1,6 +1,6 @@
 import React from "react";
 
-import Header from "../components/Header";
+import Header from "../components//Header";
 import HeroHome from "../components/HeroHome";
 import FeaturesHome from "../components/Features";
 import FeaturesBlocks from "../components/FeaturesBlocks";

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import Toggle from "./Toggle";
+import { useDarkMode } from "../hooks/useDarkMode";
 function Header({ isHasOffer }) {
   const [top, setTop] = useState(true);
-
+  const [theme, setTheme] = useDarkMode();
   // detect whether user has scrolled the page down by 10px
   useEffect(() => {
     const scrollHandler = () => {
@@ -15,7 +16,7 @@ function Header({ isHasOffer }) {
 
   return (
     <header
-      className={`fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out ${
+      className={`fixed w-full z-30 md:bg-opacity-90 transition-all duration-75 ease-in-out ${
         isHasOffer && top && "mt-12"
       } ${!top && "bg-white backdrop-blur-sm shadow-lg mt-0 dark:bg-zinc-900"}`}
     >
@@ -59,6 +60,10 @@ function Header({ isHasOffer }) {
 
           <nav className="flex flex-grow">
             <ul className="flex flex-grow justify-end flex-wrap items-center">
+              <Toggle
+                onClick={setTheme}
+                defaultChecked={theme === "dark" ? true : false}
+              />
               <li>
                 <Link
                   to="/signin"
